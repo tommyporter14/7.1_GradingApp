@@ -6,10 +6,15 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>grades</title>
+<title>Grades</title>
 <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
 </head>
 <body>
+<h1>Grades</h1>
+<c:if test="${grades.isEmpty()}">
+	<h3>There are no grades</h3>
+</c:if>
+<c:if test="${!grades.isEmpty()}">
 	<table class=table>
 		<thead>
 			<tr>
@@ -22,13 +27,16 @@
 		<tbody>
 			<c:forEach var="grade" items="${grades}">
 				<tr>
-					<td><a href="grades/detail?id=${grade.id}">${grade.name}</a></td>
-					<td>${grade.type}</td>
-					<td>${grade.score}</td>
-					<td>${grade.total}</td>
+					<td><c:out value="${grade.name}"/></td>
+					<td><c:out value="${grade.type}"/></td>
+					<td><fmt:formatNumber type="number" pattern=".#" value="${grade.score}"/></td>
+					<td><fmt:formatNumber type="number" pattern=".#" value="${grade.total}"/></td>
+					<td><a href="/delete?id=${grade.id}" class="button">Delete</a></td>
 				</tr>
 			</c:forEach>
 		</tbody>
 	</table>
+</c:if>
+	<a href="/addGrade">Add a Grade</a>
 </body>
 </html>
