@@ -22,10 +22,10 @@
 		<tbody>
 			<c:forEach var="grade" items="${grades}">
 				<tr>
-					<td><a href="grades/detail?id=${grades.id}">${grades.name}</a></td>
-					<td>${type}</td>
-					<td>${score}</td>
-					<td>${total}</td>
+					<td><a href="grades/detail?id=${grade.id}">${grade.name}</a></td>
+					<td>${grade.type}</td>
+					<td>${grade.score}</td>
+					<td>${grade.total}</td>
 				</tr>
 			</c:forEach>
 		</tbody>
